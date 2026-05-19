@@ -1,0 +1,29 @@
+<page title="Greet" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="name" expr="''"/>
+      <value name="greeting" expr="'Hello, stranger'"/>
+
+      <main class="app greet">
+        <h1>Greeting</h1>
+        <p class="lead">Type a name — no JavaScript authored by you</p>
+        <label class="field">
+          <span>Your name</span>
+          <input-bind name="name" placeholder="Ada"/>
+        </label>
+        <p class="greeting"><bind name="greeting"/></p>
+        <button type="button" class="btn primary" on="click:sayHello">Say hello</button>
+      </main>
+
+      <fn name="sayHello">
+        <when test="len(name.strip()) &gt; 0">
+          <set name="greeting" expr="'Hello, ' + name.strip() + '!'"/>
+        </when>
+        <otherwise>
+          <set name="greeting" expr="'Please enter a name'"/>
+        </otherwise>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

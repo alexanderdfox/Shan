@@ -1,0 +1,44 @@
+.demo h2, .demo h3, .demo h4 {
+  margin: 1.5rem 0 0.5rem;
+  color: var(--accent);
+}
+
+.demo h2 { font-size: 1.35rem; }
+.demo h3 { font-size: 1.15rem; }
+.demo h4 { font-size: 1rem; color: var(--gold); }
+
+.demo p { max-width: 65ch; }
+
+blockquote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--gold);
+  background: var(--surface);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.demo ul, .demo ol {
+  padding-left: 1.5rem;
+  color: var(--muted);
+}
+
+.demo pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.demo code { color: var(--gold); }
+
+mark {
+  background: rgba(212, 168, 83, 0.25);
+  color: var(--gold);
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+}

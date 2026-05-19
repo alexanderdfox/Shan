@@ -1,0 +1,52 @@
+.room-wheel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.room {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.room:hover {
+  transform: scale(1.03);
+  border-color: var(--gold);
+}
+
+.room .sym {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.room strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.room p {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.room[data-room="keys"] { border-top: 3px solid var(--gold); }
+.room[data-room="files"] { border-top: 3px solid #79c0ff; }
+.room[data-room="net"] { border-top: 3px solid #56d364; }
+
+.page code {
+  font-family: var(--mono);
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}

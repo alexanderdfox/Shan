@@ -1,0 +1,31 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.grid-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+}
+
+.grid-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.grid-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (min-width: 600px) {
+  .grid-card.span-2 {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--surface), var(--surface2));
+  }
+}

@@ -1,0 +1,9 @@
+<page title="Hello">
+  <fan name="main" ribs="4">
+    <rib id="default">
+      <show expr="'Hello from Shàn'"/>
+      <set name="x" expr="2 + 3"/>
+      <show expr="x"/>
+    </rib>
+  </fan>
+</page>

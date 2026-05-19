@@ -1,0 +1,81 @@
+<page title="Solitaire" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="state" expr="sol_new()"/>
+      <value name="sel" expr="''"/>
+      <value name="msg" expr="'Tap stock to draw. Select a pile, then a destination.'"/>
+      <value name="board_html" expr="sol_board(state, sel)"/>
+      <value name="won" expr="0"/>
+      <value name="move" expr="''"/>
+
+      <main class="app solitaire">
+        <h1>Klondike solitaire</h1>
+        <p class="lead">Server-rendered Shàn — <code>open room="rand"</code>, <code>fn</code>/<code>call</code>, <code>when</code>/<code>otherwise</code>, secure shuffle.</p>
+
+        <p class="status"><bind name="msg"/></p>
+
+        <when test="won">
+          <p class="win-banner">You win!</p>
+        </when>
+
+        <html-bind name="board_html"/>
+
+        <div class="toolbar">
+          <button type="button" class="btn" on="click:newGame">New deal</button>
+          <button type="button" class="btn" on="click:drawFromStock">Draw</button>
+          <button type="button" class="btn" on="click:autoMove">Auto to foundation</button>
+          <button type="button" class="btn" on="click:clearSel">Clear selection</button>
+        </div>
+      </main>
+
+      <fn name="refresh">
+        <set name="board_html" expr="sol_board(state, sel)"/>
+        <set name="won" expr="sol_won(state)"/>
+        <when test="won">
+          <set name="msg" expr="'Congratulations — all foundations complete!'"/>
+        </when>
+        <render/>
+      </fn>
+
+      <fn name="newGame">
+        <open room="rand" why="shuffle-deck">
+          <set name="state" expr="sol_new()"/>
+        </open>
+        <set name="sel" expr="''"/>
+        <set name="msg" expr="'New deal — good luck'"/>
+        <call name="refresh"/>
+      </fn>
+
+      <fn name="applyTap">
+        <set name="result" expr="sol_tap(state, sel, move)"/>
+        <set name="state" expr="result['state']"/>
+        <set name="sel" expr="result['sel']"/>
+        <set name="msg" expr="result['msg']"/>
+        <call name="refresh"/>
+      </fn>
+
+      <fn name="drawFromStock">
+        <set name="result" expr="sol_draw(state)"/>
+        <set name="state" expr="result['state']"/>
+        <set name="sel" expr="result['sel']"/>
+        <set name="msg" expr="result['msg']"/>
+        <call name="refresh"/>
+      </fn>
+
+      <fn name="autoMove">
+        <set name="result" expr="sol_auto(state)"/>
+        <set name="state" expr="result['state']"/>
+        <set name="sel" expr="result['sel']"/>
+        <set name="msg" expr="result['msg']"/>
+        <call name="refresh"/>
+      </fn>
+
+      <fn name="clearSel">
+        <set name="sel" expr="''"/>
+        <set name="msg" expr="'Selection cleared'"/>
+        <call name="refresh"/>
+      </fn>
+
+    </rib>
+  </fan>
+</page>

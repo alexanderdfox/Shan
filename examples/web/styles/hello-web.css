@@ -1,0 +1,27 @@
+/* Counter */
+.shan-app .count-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 1.15rem 0 1.35rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.shan-app .count-line .val {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shan-app .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}

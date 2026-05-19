@@ -1,0 +1,47 @@
+.swatches {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.swatch {
+  width: 88px;
+  height: 88px;
+  border-radius: 12px;
+  background: var(--c);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5rem;
+}
+
+.swatch span {
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.gradient-banner {
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
+  border: 1px solid var(--border);
+}
+
+.gradient-banner h2 {
+  margin: 0 0 0.5rem;
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.gradient-banner p {
+  margin: 0;
+  color: var(--muted);
+}

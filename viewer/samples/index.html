@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Shàn Viewer — Examples</title>
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="gallery.css"/>
+</head>
+<body>
+  <nav class="site-nav">
+    <span class="brand">Shàn Viewer</span>
+    <a href="index.html" aria-current="page">Gallery</a>
+  </nav>
+
+  <main class="page gallery">
+    <h1>HTML &amp; CSS Examples</h1>
+    <p class="lead">
+      Open any page in the Shàn viewer. No JavaScript — only markup and styles.
+      Run: <code>python3 -m shan view</code>
+    </p>
+
+    <div class="example-grid">
+      <a class="example-card" href="typography.html">
+        <h2>Typography</h2>
+        <p>Headings, lists, quotes, code blocks</p>
+      </a>
+      <a class="example-card" href="grid-layout.html">
+        <h2>CSS Grid</h2>
+        <p>Responsive card grid</p>
+      </a>
+      <a class="example-card" href="flex-layout.html">
+        <h2>Flexbox</h2>
+        <p>Toolbar, chips, centered hero</p>
+      </a>
+      <a class="example-card" href="forms.html">
+        <h2>Forms</h2>
+        <p>Inputs styled with pure CSS</p>
+      </a>
+      <a class="example-card" href="tables.html">
+        <h2>Tables</h2>
+        <p>Data table with zebra rows</p>
+      </a>
+      <a class="example-card" href="colors.html">
+        <h2>Colors</h2>
+        <p>Gradients, swatches, fan palette</p>
+      </a>
+      <a class="example-card" href="fan-rooms.html">
+        <h2>Security rooms</h2>
+        <p>Eight Bagua-style domains</p>
+      </a>
+      <a class="example-card" href="half-value.html">
+        <h2>Half-value ½</h2>
+        <p>Three-valued logic visual</p>
+      </a>
+      <a class="example-card" href="span-decay.html">
+        <h2>Span decay</h2>
+        <p>Contracting secrets (CSS bars)</p>
+      </a>
+      <a class="example-card" href="resume.html">
+        <h2>Resume</h2>
+        <p>Classic single-page layout</p>
+      </a>
+      <a class="example-card" href="article.html">
+        <h2>Article</h2>
+        <p>Long-form reading layout</p>
+      </a>
+      <a class="example-card" href="print.html">
+        <h2>Print styles</h2>
+        <p>@media print preview</p>
+      </a>
+    </div>
+
+    <section class="note">
+      <h2>Note</h2>
+      <p>
+        <code>.shan</code> files are Shàn <em>programs</em>, not HTML. View this folder instead:
+      </p>
+      <pre>python3 -m shan view ./viewer/samples</pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Shàn (扇) · HTML + CSS only
+  </footer>
+</body>
+</html>

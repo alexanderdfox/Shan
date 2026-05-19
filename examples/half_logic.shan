@@ -1,0 +1,21 @@
+<page title="HalfLogic">
+  <fan ribs="4">
+    <rib id="default">
+      <half name="allowed"/>
+      <when-half name="allowed">
+        <case value="half">
+          <show expr="'Still deciding (½)'"/>
+        </case>
+      </when-half>
+      <set name="allowed" expr="Yes"/>
+      <when-half name="allowed">
+        <case value="yes">
+          <show expr="'Allowed'"/>
+        </case>
+        <case value="no">
+          <deny/>
+        </case>
+      </when-half>
+    </rib>
+  </fan>
+</page>

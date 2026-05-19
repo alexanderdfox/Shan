@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CSS Grid — Shàn Examples</title>
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="grid-layout.css"/>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="index.html">← Gallery</a>
+    <a href="flex-layout.html">Flex</a>
+    <a href="colors.html">Colors</a>
+  </nav>
+  <main class="page">
+    <h1>CSS Grid</h1>
+    <p class="lead">A responsive grid of cards — resize the window to see columns adapt.</p>
+    <div class="card-grid">
+      <article class="grid-card"><h2>keys</h2><p>Crypto &amp; secrets</p></article>
+      <article class="grid-card"><h2>files</h2><p>Filesystem access</p></article>
+      <article class="grid-card"><h2>net</h2><p>Network egress</p></article>
+      <article class="grid-card"><h2>proc</h2><p>Processes</p></article>
+      <article class="grid-card"><h2>env</h2><p>Environment</p></article>
+      <article class="grid-card"><h2>time</h2><p>Clocks &amp; timers</p></article>
+      <article class="grid-card span-2"><h2>Wide card</h2><p>grid-column: span 2 on wide screens</p></article>
+      <article class="grid-card"><h2>rand</h2><p>Random bytes</p></article>
+      <article class="grid-card"><h2>sys</h2><p>Host info</p></article>
+    </div>
+  </main>
+  <footer class="site-footer"><a href="index.html">All examples</a></footer>
+</body>
+</html>

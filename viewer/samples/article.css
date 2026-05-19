@@ -1,0 +1,62 @@
+.long-read {
+  max-width: 42rem;
+}
+
+.long-read .kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--gold);
+  margin: 0 0 0.5rem;
+}
+
+.long-read h1 {
+  font-size: 1.85rem;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.long-read .byline {
+  color: var(--muted);
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+}
+
+.long-read p {
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
+
+.dropcap::first-letter {
+  float: left;
+  font-size: 3.2rem;
+  line-height: 0.85;
+  padding-right: 0.1em;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.long-read h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.pullquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--half);
+  background: var(--surface);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.long-read code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  color: var(--gold);
+}

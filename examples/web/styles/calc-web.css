@@ -1,0 +1,88 @@
+/* Calculator — 4×5 keypad */
+.shan-app .calc {
+  max-width: 100%;
+}
+
+.shan-app .calc .readout {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  text-align: right;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: clamp(1.75rem, 7vw, 2.35rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  border-radius: var(--radius-sm);
+  background: var(--surface-inset);
+  border: 1px solid var(--border);
+  box-shadow: var(--input-inset);
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.shan-app .calc .readout .val {
+  color: var(--text);
+  font-size: inherit;
+  font-weight: inherit;
+  background: none;
+  -webkit-text-fill-color: var(--text);
+}
+
+.shan-app .calc .pad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(3rem, auto));
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.shan-app .calc .pad .btn {
+  min-height: 3rem;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  border-radius: var(--radius-sm);
+}
+
+.shan-app .calc .pad .btn.wide {
+  grid-column: span 2;
+}
+
+.shan-app .calc .pad .btn.eq {
+  grid-column: span 2;
+}
+
+.shan-app .calc .pad .btn.op {
+  background: var(--surface-raised);
+  color: var(--muted);
+}
+
+.shan-app .calc .pad .btn.op.sym {
+  color: var(--gold);
+  font-size: 1.25rem;
+}
+
+.shan-app .calc .pad .btn.clear {
+  background: #cf222e;
+  color: #fff;
+  border: none;
+}
+
+[data-theme="light"] .shan-app .calc .pad .btn.clear {
+  background: #d1242f;
+}
+
+.shan-app .calc .pad .btn.eq {
+  background: var(--accent-grad);
+  color: var(--btn-primary-fg);
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+}

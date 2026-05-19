@@ -1,0 +1,33 @@
+<page title="Shàn Counter" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="count" expr="0"/>
+
+      <main class="app">
+        <h1>Shàn in the browser</h1>
+        <p class="lead">HTML + CSS + Shàn — no hand-written JavaScript</p>
+        <p class="count-line">Count: <bind name="count"/></p>
+        <div class="actions">
+          <button type="button" class="btn" on="click:decrement">−1</button>
+          <button type="button" class="btn primary" on="click:increment">+1</button>
+          <button type="button" class="btn" on="click:reset">Reset</button>
+        </div>
+      </main>
+
+      <fn name="increment">
+        <set name="count" expr="count + 1"/>
+        <render/>
+      </fn>
+      <fn name="decrement">
+        <when test="count &gt; 0">
+          <set name="count" expr="count - 1"/>
+        </when>
+        <render/>
+      </fn>
+      <fn name="reset">
+        <set name="count" expr="0"/>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

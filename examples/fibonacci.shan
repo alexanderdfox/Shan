@@ -1,0 +1,18 @@
+<page title="Fibonacci">
+  <fan ribs="4">
+    <rib id="default">
+      <fn name="fib" args="n">
+        <when test="n &lt;= 1">
+          <return expr="n"/>
+        </when>
+        <otherwise>
+          <return expr="fib(n-1) + fib(n-2)"/>
+        </otherwise>
+      </fn>
+      <each var="i" in="range(10)">
+        <call name="fib" args="i" result="f"/>
+        <show expr="f"/>
+      </each>
+    </rib>
+  </fan>
+</page>

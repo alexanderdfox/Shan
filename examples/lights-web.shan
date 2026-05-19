@@ -1,0 +1,41 @@
+<page title="Lights" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="on" expr="0"/>
+      <value name="lamp" expr="'🌑'"/>
+
+      <main class="app lights">
+        <h1>Fan lamp</h1>
+        <p class="lamp"><bind name="lamp"/></p>
+        <p class="status">Power: <bind name="on"/></p>
+        <div class="actions">
+          <button type="button" class="btn primary" on="click:turnOn">On</button>
+          <button type="button" class="btn" on="click:turnOff">Off</button>
+          <button type="button" class="btn" on="click:toggle">Toggle</button>
+        </div>
+      </main>
+
+      <fn name="turnOn">
+        <set name="on" expr="1"/>
+        <set name="lamp" expr="'💡'"/>
+        <render/>
+      </fn>
+      <fn name="turnOff">
+        <set name="on" expr="0"/>
+        <set name="lamp" expr="'🌑'"/>
+        <render/>
+      </fn>
+      <fn name="toggle">
+        <when test="on">
+          <set name="on" expr="0"/>
+          <set name="lamp" expr="'🌑'"/>
+        </when>
+        <otherwise>
+          <set name="on" expr="1"/>
+          <set name="lamp" expr="'💡'"/>
+        </otherwise>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

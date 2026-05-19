@@ -1,0 +1,93 @@
+<page title="Calculator" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="display" expr="'0'"/>
+      <value name="lhs" expr="''"/>
+      <value name="op" expr="''"/>
+
+      <main class="app calc">
+        <h1>Calculator</h1>
+        <div class="readout" aria-live="polite"><bind name="display"/></div>
+        <div class="pad">
+          <button type="button" class="btn op clear" on="click:clear">C</button>
+          <button type="button" class="btn op sym" on="click:opDiv">÷</button>
+          <button type="button" class="btn op sym" on="click:opMul">×</button>
+          <button type="button" class="btn op sym" on="click:opSub">−</button>
+
+          <button type="button" class="btn" on="click:d7">7</button>
+          <button type="button" class="btn" on="click:d8">8</button>
+          <button type="button" class="btn" on="click:d9">9</button>
+          <button type="button" class="btn op sym" on="click:opAdd">+</button>
+
+          <button type="button" class="btn" on="click:d4">4</button>
+          <button type="button" class="btn" on="click:d5">5</button>
+          <button type="button" class="btn" on="click:d6">6</button>
+          <button type="button" class="btn op sym" on="click:opMul">×</button>
+
+          <button type="button" class="btn" on="click:d1">1</button>
+          <button type="button" class="btn" on="click:d2">2</button>
+          <button type="button" class="btn" on="click:d3">3</button>
+          <button type="button" class="btn op sym" on="click:opSub">−</button>
+
+          <button type="button" class="btn wide" on="click:d0">0</button>
+          <button type="button" class="btn eq" on="click:equals">=</button>
+        </div>
+      </main>
+
+      <fn name="appendDigit" args="d">
+        <when test="display == '0'">
+          <set name="display" expr="d"/>
+        </when>
+        <otherwise>
+          <set name="display" expr="display + d"/>
+        </otherwise>
+        <render/>
+      </fn>
+
+      <fn name="d0"><call name="appendDigit" args="'0'"/></fn>
+      <fn name="d1"><call name="appendDigit" args="'1'"/></fn>
+      <fn name="d2"><call name="appendDigit" args="'2'"/></fn>
+      <fn name="d3"><call name="appendDigit" args="'3'"/></fn>
+      <fn name="d4"><call name="appendDigit" args="'4'"/></fn>
+      <fn name="d5"><call name="appendDigit" args="'5'"/></fn>
+      <fn name="d6"><call name="appendDigit" args="'6'"/></fn>
+      <fn name="d7"><call name="appendDigit" args="'7'"/></fn>
+      <fn name="d8"><call name="appendDigit" args="'8'"/></fn>
+      <fn name="d9"><call name="appendDigit" args="'9'"/></fn>
+
+      <fn name="opPress" args="sym">
+        <when test="op != ''">
+          <set name="display" expr="apply_op(lhs, op, display)"/>
+          <set name="lhs" expr="display"/>
+        </when>
+        <otherwise>
+          <set name="lhs" expr="display"/>
+        </otherwise>
+        <set name="op" expr="sym"/>
+        <set name="display" expr="'0'"/>
+        <render/>
+      </fn>
+
+      <fn name="opAdd"><call name="opPress" args="'+'"/></fn>
+      <fn name="opSub"><call name="opPress" args="'-'"/></fn>
+      <fn name="opMul"><call name="opPress" args="'*'"/></fn>
+      <fn name="opDiv"><call name="opPress" args="'/'"/></fn>
+
+      <fn name="equals">
+        <when test="op != ''">
+          <set name="display" expr="apply_op(lhs, op, display)"/>
+          <set name="lhs" expr="''"/>
+          <set name="op" expr="''"/>
+        </when>
+        <render/>
+      </fn>
+
+      <fn name="clear">
+        <set name="display" expr="'0'"/>
+        <set name="lhs" expr="''"/>
+        <set name="op" expr="''"/>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

@@ -1,0 +1,131 @@
+/* Shàn Viewer sample — HTML + CSS only */
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --accent: #58a6ff;
+  --gold: #d4a853;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --rib: #21262d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.fan {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rib);
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rib);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card code {
+  background: var(--rib);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--gold);
+}
+
+.ribs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.rib {
+  background: var(--rib);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text);
+  border-left: 3px solid var(--gold);
+}
+
+.half .half-bar {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0.5rem 0;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.footer code {
+  background: var(--surface);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+}
+
+@media (max-width: 520px) {
+  .ribs ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

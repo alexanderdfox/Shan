@@ -1,0 +1,61 @@
+/* Todo list */
+.shan-app .done-line {
+  margin-bottom: 1.15rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  font-size: 0.95rem;
+}
+
+.shan-app .done-line .val {
+  color: var(--success);
+  font-size: 1.15rem;
+  margin-left: 0.25rem;
+}
+
+.shan-app .list {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.shan-app .item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.8rem 0.95rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.18s var(--ease);
+}
+
+.shan-app .item:last-child {
+  border-bottom: none;
+}
+
+.shan-app .item:hover {
+  background: var(--surface-raised);
+}
+
+.shan-app .item .label {
+  font-weight: 500;
+}
+
+.shan-app .mark .val {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.65rem;
+  padding: 0.15rem 0.45rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  border-radius: 5px;
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success-border);
+}

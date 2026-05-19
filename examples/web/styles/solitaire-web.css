@@ -1,0 +1,221 @@
+/* Klondike solitaire */
+.shan-app:has(.solitaire) {
+  max-width: 920px;
+}
+
+.shan-app .solitaire .lead code {
+  font-size: 0.85em;
+  color: var(--teal);
+}
+
+.shan-app .solitaire .status {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.shan-app .solitaire .status .val {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.shan-app .solitaire .win-banner {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
+}
+
+.shan-app .solitaire .sol-board {
+  margin-bottom: 1.15rem;
+}
+
+.shan-app .solitaire .sol-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.shan-app .solitaire .sol-foundations {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.shan-app .solitaire .sol-stock-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.shan-app .solitaire .sol-pile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 4.25rem;
+  min-height: 5.5rem;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    transform 0.15s var(--ease);
+}
+
+.shan-app .solitaire .sol-pile:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.shan-app .solitaire .sol-pile.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 35%, transparent);
+}
+
+.shan-app .solitaire .sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.shan-app .solitaire .sol-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 3.5rem;
+  height: 4.85rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  font-weight: 700;
+  line-height: 1;
+}
+
+[data-theme="dark"] .shan-app .solitaire .sol-card {
+  background: linear-gradient(145deg, #f8f9fb 0%, #e8ecf0 100%);
+}
+
+.shan-app .solitaire .sol-card.red {
+  color: #c41e3a;
+}
+
+.shan-app .solitaire .sol-card.black {
+  color: #1a1f24;
+}
+
+.shan-app .solitaire .sol-card .rank {
+  font-size: 1rem;
+}
+
+.shan-app .solitaire .sol-card .suit {
+  font-size: 1.35rem;
+  align-self: flex-end;
+}
+
+.shan-app .solitaire .sol-card.back {
+  background: repeating-linear-gradient(
+    45deg,
+    #1a4d2e,
+    #1a4d2e 6px,
+    #245c38 6px,
+    #245c38 12px
+  );
+  border-color: #0f3320;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+.shan-app .solitaire .sol-card.selected {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.shan-app .solitaire .sol-slot {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 4.85rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.shan-app .solitaire .sol-stock-row .count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.shan-app .solitaire .sol-tableau {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.shan-app .solitaire .sol-column {
+  position: relative;
+  min-height: 12rem;
+}
+
+.shan-app .solitaire .sol-column > .sol-pile {
+  width: 100%;
+  min-height: 2rem;
+  margin-bottom: 0.25rem;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.shan-app .solitaire .sol-stack {
+  position: relative;
+  min-height: 10rem;
+  padding-top: 0.25rem;
+}
+
+.shan-app .solitaire .sol-card-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--off, 0) * 1);
+}
+
+.shan-app .solitaire .toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.shan-app .solitaire .toolbar .btn {
+  flex: 1 1 auto;
+  min-width: 7rem;
+}
+
+@media (max-width: 720px) {
+  .shan-app .solitaire .sol-tableau {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .shan-app .solitaire .sol-top {
+    flex-direction: column;
+  }
+}

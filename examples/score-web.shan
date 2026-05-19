@@ -1,0 +1,39 @@
+<page title="Scoreboard" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="home" expr="0"/>
+      <value name="away" expr="0"/>
+
+      <main class="app score">
+        <h1>Scoreboard</h1>
+        <div class="board">
+          <section class="team">
+            <h2>Home</h2>
+            <p class="pts"><bind name="home"/></p>
+            <button type="button" class="btn" on="click:homePlus">+1</button>
+          </section>
+          <section class="team">
+            <h2>Away</h2>
+            <p class="pts"><bind name="away"/></p>
+            <button type="button" class="btn" on="click:awayPlus">+1</button>
+          </section>
+        </div>
+        <button type="button" class="btn reset" on="click:resetScore">Reset</button>
+      </main>
+
+      <fn name="homePlus">
+        <set name="home" expr="home + 1"/>
+        <render/>
+      </fn>
+      <fn name="awayPlus">
+        <set name="away" expr="away + 1"/>
+        <render/>
+      </fn>
+      <fn name="resetScore">
+        <set name="home" expr="0"/>
+        <set name="away" expr="0"/>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

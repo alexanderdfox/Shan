@@ -1,0 +1,13 @@
+<page title="Data">
+  <fan ribs="4">
+    <rib id="default">
+      <set name="xs" expr="[1, 2, 3, 4, 5]"/>
+      <set name="doubled" expr="[x * 2 for x in xs]"/>
+      <show expr="doubled"/>
+      <set name="d" expr="{'name': 'Shàn', 'version': 1}"/>
+      <show expr="json_dumps(d)"/>
+      <import module="math"/>
+      <show expr="sqrt(144)"/>
+    </rib>
+  </fan>
+</page>

@@ -1,0 +1,142 @@
+<page title="Encrypted Images" mount="#app">
+  <fan ribs="8">
+    <rib id="ui">
+      <value name="key" expr="'quarter-turn-key'"/>
+      <value name="ribs" expr="8"/>
+      <value name="ig_layout" expr="'square'"/>
+      <value name="plain_b64" expr="sample_image_b64()"/>
+      <value name="cover_b64" expr="''"/>
+      <value name="source_b64" expr="''"/>
+      <value name="mime" expr="'image/png'"/>
+      <value name="sealed" expr="''"/>
+      <value name="noise_b64" expr="''"/>
+      <value name="stego_b64" expr="''"/>
+      <value name="ig_stego_b64" expr="''"/>
+      <value name="summary" expr="''"/>
+      <value name="opened_b64" expr="''"/>
+      <value name="status" expr="'Cover ready — encrypt crops to Instagram 1080×1080 (square)'"/>
+      <value name="match_ok" expr="0"/>
+      <value name="match_badge_html" expr="''"/>
+
+      <main class="app fan-image">
+        <h1>Encrypted images</h1>
+        <p class="lead">QFan encrypts your cover; steganography hides the seal in panel 1 pixels when it fits, otherwise in panel 2 noise (large uploads). Cropped to <strong>Instagram</strong> size. Save panel 1 PNG (and panel 2 if used) to reveal — panel 3 JPEG strips LSB data.</p>
+
+        <section class="controls">
+          <label class="field">
+            <span>Encryption key</span>
+            <input-bind name="key" type="text"/>
+          </label>
+          <label class="field narrow">
+            <span>Ribs (2–16)</span>
+            <input-bind name="ribs" type="number"/>
+          </label>
+          <label class="field narrow">
+            <span>Instagram layout</span>
+            <input-bind name="ig_layout" type="text" placeholder="square"/>
+          </label>
+          <p class="layout-hint">Layouts: <code>square</code> (1080×1080), <code>portrait</code> (1080×1350), <code>landscape</code> (1080×566)</p>
+          <label class="field file-field">
+            <span>Cover image (PNG/JPEG, max 2 MiB)</span>
+            <input-bind name="image" type="file" accept="image/*"/>
+          </label>
+          <div class="actions">
+            <button type="button" class="btn" on="click:loadSample">Reset sample</button>
+            <button type="button" class="btn primary" on="click:qfanRound">QFan + stego (Instagram)</button>
+            <button type="button" class="btn" on="click:seal">Encrypt + hide</button>
+            <button type="button" class="btn" on="click:reveal">Reveal stego</button>
+          </div>
+        </section>
+
+        <p class="status"><bind name="status"/></p>
+        <p class="audit"><bind name="summary"/></p>
+
+        <ol class="pipeline">
+          <li>Altered cover — message hidden here when small; pointer only when large</li>
+          <li>QFan noise — cipher map; large seals store the full message here</li>
+          <li>Instagram JPEG — for posting only (reveal needs panel 1 PNG)</li>
+          <li>Decrypted — extract panel 1 + key</li>
+        </ol>
+
+        <section class="gallery gallery-four">
+          <figure class="panel">
+            <figcaption>1 — Cover (message hidden)</figcaption>
+            <div class="frame">
+              <img-bind name="orig_url" alt="Cover with hidden encrypted message" class="preview"/>
+            </div>
+          </figure>
+          <figure class="panel">
+            <figcaption>2 — QFan noise</figcaption>
+            <div class="frame">
+              <img-bind name="noise_url" alt="QFan ciphertext as noise" class="preview noise"/>
+            </div>
+          </figure>
+          <figure class="panel panel-stego panel-ig">
+            <figcaption>3 — Instagram post</figcaption>
+            <div class="frame">
+              <img-bind name="ig_stego_url" alt="Instagram-ready encrypted image" class="preview"/>
+            </div>
+          </figure>
+          <figure class="panel">
+            <figcaption>4 — Decrypted</figcaption>
+            <div class="frame frame-decrypted">
+              <img-bind name="opened_url" alt="Recovered cover" class="preview"/>
+              <html-bind name="match_badge_html"/>
+            </div>
+          </figure>
+        </section>
+
+        <section class="envelope">
+          <h2 class="envelope-title">Sealed envelope (base64 JSON)</h2>
+          <pre class="sealed-text"><bind name="sealed"/></pre>
+        </section>
+      </main>
+
+      <fn name="loadSample">
+        <set name="plain_b64" expr="sample_image_b64()"/>
+        <set name="cover_b64" expr="''"/>
+        <set name="source_b64" expr="''"/>
+        <set name="mime" expr="'image/png'"/>
+        <set name="sealed" expr="''"/>
+        <set name="noise_b64" expr="''"/>
+        <set name="stego_b64" expr="''"/>
+        <set name="ig_stego_b64" expr="''"/>
+        <set name="opened_b64" expr="''"/>
+        <set name="summary" expr="''"/>
+        <set name="match_ok" expr="0"/>
+        <set name="status" expr="'Sample cover loaded'"/>
+        <render/>
+      </fn>
+
+      <fn name="qfanRound">
+        <when test="len(plain_b64) == 0">
+          <set name="status" expr="'No cover — upload or reset sample'"/>
+        </when>
+        <otherwise>
+          <set name="status" expr="'Resizing for Instagram, QFan encrypt, stego…'"/>
+        </otherwise>
+        <render/>
+      </fn>
+
+      <fn name="seal">
+        <when test="len(plain_b64) == 0">
+          <set name="status" expr="'No cover — upload or reset sample'"/>
+        </when>
+        <otherwise>
+          <set name="status" expr="'Encrypting for Instagram…'"/>
+        </otherwise>
+        <render/>
+      </fn>
+
+      <fn name="reveal">
+        <when test="len(stego_b64) == 0">
+          <set name="status" expr="'Encrypt + hide first — need stego PNG'"/>
+        </when>
+        <otherwise>
+          <set name="status" expr="'Extracting stego and decrypting…'"/>
+        </otherwise>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

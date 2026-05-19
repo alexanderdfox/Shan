@@ -1,0 +1,15 @@
+<page title="Shàn Viewer">
+  <fan name="viewer" ribs="4">
+    <rib id="default">
+      <import module="sys"/>
+      <import module="shan.viewer_app"/>
+
+      <set name="start" expr="sys.argv[1] if len(sys.argv) &gt; 1 else viewer_app.sample_dir()"/>
+      <set name="do_launch" expr="viewer_app.launch"/>
+
+      <open room="files" why="open-html-css-viewer">
+        <call name="do_launch" args="start"/>
+      </open>
+    </rib>
+  </fan>
+</page>

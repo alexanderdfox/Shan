@@ -1,0 +1,354 @@
+/* Shàn web — design system (dark / light, no JavaScript; system fonts only for CSP) */
+
+/* —— Dark theme (default) —— */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-deep: #070a0f;
+  --bg-mid: #0d1117;
+  --bg-card: rgba(22, 27, 34, 0.82);
+  --surface: rgba(13, 17, 23, 0.75);
+  --surface-raised: rgba(255, 255, 255, 0.05);
+  --surface-inset: rgba(7, 10, 15, 0.9);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(88, 166, 255, 0.45);
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --gold: #d4a853;
+  --blue: #58a6ff;
+  --teal: #3fb9b0;
+  --success: #3fb950;
+  --success-bg: rgba(63, 185, 80, 0.1);
+  --success-border: rgba(63, 185, 80, 0.28);
+  --accent-grad: linear-gradient(135deg, var(--gold) 0%, var(--blue) 55%, var(--teal) 100%);
+  --bg-image:
+    radial-gradient(ellipse 90% 60% at 50% -15%, rgba(88, 166, 255, 0.16), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 50%, rgba(212, 168, 83, 0.07), transparent 50%),
+    radial-gradient(ellipse 60% 45% at 0% 80%, rgba(63, 185, 176, 0.09), transparent 50%),
+    linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 45%, #0f1623 100%);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  --shadow-btn: 0 4px 14px rgba(0, 0, 0, 0.32);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.22);
+  --input-bg: var(--surface-inset);
+  --input-inset: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+  --focus-ring: 0 0 0 3px rgba(88, 166, 255, 0.22);
+  --btn-primary-fg: #0a0e14;
+  --chrome-bg: rgba(13, 17, 23, 0.72);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* —— Light theme —— */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-deep: #f4f6f9;
+  --bg-mid: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --surface: rgba(246, 248, 250, 0.95);
+  --surface-raised: #ffffff;
+  --surface-inset: #eef1f5;
+  --border: rgba(27, 31, 36, 0.12);
+  --border-hover: rgba(9, 105, 218, 0.45);
+  --text: #1f2328;
+  --muted: #656d76;
+  --gold: #9a6700;
+  --blue: #0969da;
+  --teal: #1a7f78;
+  --success: #1a7f37;
+  --success-bg: rgba(26, 127, 55, 0.08);
+  --success-border: rgba(26, 127, 55, 0.25);
+  --accent-grad: linear-gradient(135deg, #bf8700 0%, #0969da 55%, #1a7f78 100%);
+  --bg-image:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(9, 105, 218, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 100% 0%, rgba(154, 103, 0, 0.06), transparent 50%),
+    linear-gradient(180deg, #f4f6f9 0%, #ffffff 40%, #f0f3f7 100%);
+  --shadow-lg: 0 12px 40px rgba(31, 35, 40, 0.08), 0 0 0 1px rgba(31, 35, 40, 0.06);
+  --shadow-btn: 0 2px 8px rgba(31, 35, 40, 0.08);
+  --shadow-sm: 0 1px 3px rgba(31, 35, 40, 0.1);
+  --input-bg: #ffffff;
+  --input-inset: inset 0 1px 2px rgba(31, 35, 40, 0.06);
+  --focus-ring: 0 0 0 3px rgba(9, 105, 218, 0.2);
+  --btn-primary-fg: #ffffff;
+  --chrome-bg: rgba(255, 255, 255, 0.88);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg-deep);
+  background-image: var(--bg-image);
+  background-attachment: fixed;
+}
+
+/* —— Site chrome —— */
+.site-chrome {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--chrome-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.site-chrome .nav-back {
+  justify-self: center;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease);
+}
+
+.site-chrome .nav-back:hover {
+  color: var(--blue);
+  border-color: var(--border);
+  background: var(--surface-raised);
+}
+
+.nav-spacer {
+  display: block;
+}
+
+.theme-switch {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--surface-inset);
+  border: 1px solid var(--border);
+  gap: 2px;
+}
+
+.theme-switch .theme-opt {
+  padding: 0.38rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  border-radius: 999px;
+  transition:
+    color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.theme-switch .theme-opt:hover {
+  color: var(--text);
+}
+
+.theme-switch .theme-opt[aria-current="true"] {
+  color: var(--text);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .theme-switch .theme-opt[aria-current="true"] {
+  background: #ffffff;
+}
+
+/* —— App shell —— */
+.shan-app {
+  display: block;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.shan-app:has(.calc) {
+  max-width: 360px;
+}
+
+.shan-app .app {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  animation: card-in 0.45s var(--ease) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.shan-app h1 {
+  margin: 0 0 0.45rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shan-app .lead {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 1.35rem;
+  line-height: 1.55;
+}
+
+.shan-app .val {
+  color: var(--gold);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* —— Buttons —— */
+.shan-app .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition:
+    transform 0.18s var(--ease),
+    box-shadow 0.18s var(--ease),
+    border-color 0.18s var(--ease);
+}
+
+.shan-app .btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.shan-app .btn:active {
+  transform: translateY(0);
+}
+
+.shan-app .btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.shan-app .btn.primary {
+  background: var(--accent-grad);
+  color: var(--btn-primary-fg);
+  border: none;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .shan-app .btn.primary {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.shan-app .btn.small {
+  padding: 0.38rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+/* —— Inputs —— */
+.shan-app input[type="text"],
+.shan-app input[type="search"],
+.shan-app input[type="email"],
+.shan-app input[type="number"] {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--input-inset);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.shan-app input[type="text"]:focus,
+.shan-app input[type="search"]:focus,
+.shan-app input[type="email"]:focus,
+.shan-app input[type="number"]:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: var(--input-inset), var(--focus-ring);
+}
+
+.shan-app label.field span,
+.shan-app .field > span:first-child {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.shan-app .field {
+  margin-bottom: 1rem;
+}

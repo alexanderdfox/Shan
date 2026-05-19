@@ -1,0 +1,50 @@
+<page title="QFan Cipher">
+  <fan ribs="8">
+    <rib id="cipher">
+      <value name="message" expr="'The fan holds half-truths until observed'"/>
+      <value name="sealed" expr="''"/>
+      <value name="opened" expr="''"/>
+      <value name="summary" expr="''"/>
+      <value name="match" expr="Half"/>
+
+      <show expr="'=== QFan: Half-Truth Quantum Fan cipher ==='"/>
+      <show expr="'Ribs vote on each keystream bit; disagreement → ½ (superposition)'"/>
+
+      <open room="keys" why="install-master-key">
+        <secret name="masterKey" uses="64">qfan-demo-master-key</secret>
+      </open>
+
+      <show expr="'--- Encrypt (span contracts each 32-byte block) ---'"/>
+      <open room="keys" why="qfan-encrypt">
+        <set name="sealed" expr="fan_encrypt(message, masterKey, 8)"/>
+        <set name="summary" expr="fan_audit_summary(sealed)"/>
+      </open>
+      <show expr="summary"/>
+      <show expr="'sealed (base64 envelope):'"/>
+      <show expr="sealed"/>
+
+      <show expr="'--- Decrypt (re-observe key; collapse ½ positions) ---'"/>
+      <open room="keys" why="qfan-decrypt">
+        <set name="opened" expr="fan_decrypt(sealed, masterKey, 8)"/>
+      </open>
+      <show expr="opened"/>
+
+      <set name="match" expr="Yes if message == opened else No"/>
+      <when-half name="match">
+        <case value="yes">
+          <show expr="'✓ Plaintext recovered'"/>
+        </case>
+        <case value="no">
+          <show expr="'✗ Decrypt mismatch'"/>
+        </case>
+        <otherwise>
+          <show expr="'½ Indeterminate match'"/>
+        </otherwise>
+      </when-half>
+
+      <show expr="'--- Three-valued rib combine (Half AND Yes → Half) ---'"/>
+      <show expr="combine_half(Half, Yes)"/>
+      <show expr="combine_half(Yes, Yes)"/>
+    </rib>
+  </fan>
+</page>

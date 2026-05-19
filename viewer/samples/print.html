@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Print styles — Shàn Examples</title>
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="print.css"/>
+</head>
+<body>
+  <nav class="site-nav screen-only">
+    <a class="brand" href="index.html">← Gallery</a>
+  </nav>
+  <main class="page print-demo">
+    <h1>Print stylesheet</h1>
+    <p class="lead screen-only">Use File → Print (or Cmd+P) to preview. Screen colors differ from print.</p>
+    <section class="print-card">
+      <h2>Fan audit log</h2>
+      <table>
+        <tr><th>Time</th><th>Room</th><th>Why</th></tr>
+        <tr><td>10:01</td><td>keys</td><td>login</td></tr>
+        <tr><td>10:02</td><td>files</td><td>read-config</td></tr>
+      </table>
+    </section>
+    <p class="print-only">This paragraph only appears when printing.</p>
+  </main>
+  <footer class="site-footer screen-only"><a href="index.html">All examples</a></footer>
+</body>
+</html>

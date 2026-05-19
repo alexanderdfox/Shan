@@ -1,0 +1,55 @@
+.print-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.print-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.print-card th,
+.print-card td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  .print-card {
+    border: 1px solid #333;
+    background: #fff;
+  }
+
+  .print-card th {
+    background: #eee;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+}

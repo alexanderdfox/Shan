@@ -1,0 +1,50 @@
+<page title="Todo" mount="#app">
+  <fan ribs="4">
+    <rib id="ui">
+      <value name="t0" expr="0"/>
+      <value name="t1" expr="0"/>
+      <value name="t2" expr="0"/>
+      <value name="done" expr="0"/>
+
+      <main class="app todo">
+        <h1>Three todos</h1>
+        <p class="done-line">Done: <bind name="done"/> / 3</p>
+        <ul class="list">
+          <li class="item">
+            <span class="label">Learn Shàn tags</span>
+            <span class="mark"><bind name="t0"/></span>
+            <button type="button" class="btn small" on="click:toggle0">Toggle</button>
+          </li>
+          <li class="item">
+            <span class="label">Run shan serve</span>
+            <span class="mark"><bind name="t1"/></span>
+            <button type="button" class="btn small" on="click:toggle1">Toggle</button>
+          </li>
+          <li class="item">
+            <span class="label">Ship fan security</span>
+            <span class="mark"><bind name="t2"/></span>
+            <button type="button" class="btn small" on="click:toggle2">Toggle</button>
+          </li>
+        </ul>
+        <button type="button" class="btn" on="click:recount">Recount</button>
+      </main>
+
+      <fn name="toggle0">
+        <set name="t0" expr="1 - t0"/>
+        <call name="recount"/>
+      </fn>
+      <fn name="toggle1">
+        <set name="t1" expr="1 - t1"/>
+        <call name="recount"/>
+      </fn>
+      <fn name="toggle2">
+        <set name="t2" expr="1 - t2"/>
+        <call name="recount"/>
+      </fn>
+      <fn name="recount">
+        <set name="done" expr="t0 + t1 + t2"/>
+        <render/>
+      </fn>
+    </rib>
+  </fan>
+</page>

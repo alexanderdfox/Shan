@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Flexbox — Shàn Examples</title>
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="flex-layout.css"/>
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="brand" href="index.html">← Gallery</a>
+    <a href="grid-layout.html">Grid</a>
+    <a href="forms.html">Forms</a>
+  </nav>
+  <main class="page">
+    <h1>Flexbox</h1>
+    <p class="lead">Toolbars, chips, and a centered hero — layout without scripts.</p>
+
+    <section class="toolbar" aria-label="toolbar demo">
+      <span class="tool-label">Rooms</span>
+      <a class="chip" href="fan-rooms.html">keys</a>
+      <a class="chip" href="fan-rooms.html">files</a>
+      <a class="chip" href="fan-rooms.html">net</a>
+      <span class="spacer" aria-hidden="true"></span>
+      <span class="chip muted">half</span>
+    </section>
+
+    <section class="hero">
+      <p class="hero-half">&#189;</p>
+      <h2>Fan half-open</h2>
+      <p>Flexbox centers this block vertically and horizontally.</p>
+    </section>
+
+    <section class="row-cards" aria-label="truth values">
+      <article class="mini-card"><strong>Yes</strong><span class="val-yes">true</span></article>
+      <article class="mini-card"><strong>No</strong><span class="val-no">false</span></article>
+      <article class="mini-card"><strong>Half</strong><span class="val-half">&#189;</span></article>
+    </section>
+  </main>
+  <footer class="site-footer"><a href="index.html">All examples</a></footer>
+</body>
+</html>

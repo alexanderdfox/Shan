@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/all-themes/master/schemas/tmLanguage.schema.json",
+  "name": "Shan",
+  "scopeName": "text.xml.shan",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#tags" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.html",
+          "begin": "<!--",
+          "end": "-->"
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "meta.tag.shan",
+          "begin": "(<)([\\w-]+)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.html" },
+            "2": { "name": "entity.name.tag.shan" }
+          },
+          "end": "/?>",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.tag.end.html" }
+          },
+          "patterns": [
+            { "include": "#attributes" }
+          ]
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.html",
+          "match": "\\b(name|expr|test|room|why|uses|args|in|var|module|path|result|prompt|msg|ribs|id|title|key|value)\\b"
+        },
+        {
+          "name": "string.quoted.double.html",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "source.embedded.python",
+              "match": ".+",
+              "captures": {
+                "0": { "patterns": [{ "include": "source.python" }] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

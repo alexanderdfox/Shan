@@ -1,0 +1,62 @@
+.resume {
+  max-width: 640px;
+}
+
+.resume-head {
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.resume-head h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.resume .title {
+  margin: 0.25rem 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.resume .contact {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.resume section h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin: 0 0 0.75rem;
+}
+
+.resume article h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1rem;
+}
+
+.resume .when {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.resume ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+}
+
+.skills span {
+  display: inline-block;
+  margin: 0.25rem 0.35rem 0.25rem 0;
+  padding: 0.2rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}

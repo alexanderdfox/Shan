@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Shàn: Run current file",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "${workspaceFolder}/.venv/bin/python -m shan run ${file} --loose",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Shàn: Run compiled",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "${workspaceFolder}/.venv/bin/python -m shan run ${file} --compiled",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

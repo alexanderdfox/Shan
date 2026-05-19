@@ -1,0 +1,175 @@
+/* QFan encrypted images */
+.shan-app .fan-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.shan-app .fan-image .lead {
+  margin-bottom: 1.25rem;
+}
+
+.shan-app .fan-image .controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  align-items: end;
+}
+
+.shan-app .fan-image .controls .file-field {
+  grid-column: 1 / -1;
+}
+
+.shan-app .fan-image .controls .narrow input[type="number"] {
+  width: 4.5rem;
+}
+
+.shan-app .fan-image .actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.shan-app .fan-image .status {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.shan-app .fan-image .pipeline {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.shan-app .fan-image .frame-decrypted {
+  position: relative;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.shan-app .fan-image .match-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--success);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+}
+
+.shan-app .fan-image .audit {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  font-family: var(--mono, ui-monospace, monospace);
+  color: var(--muted);
+}
+
+.shan-app .fan-image .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.shan-app .fan-image .gallery-four {
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.shan-app .fan-image .layout-hint {
+  grid-column: 1 / -1;
+  margin: -0.35rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.shan-app .fan-image .layout-hint code {
+  font-size: 0.85em;
+}
+
+.shan-app .fan-image .panel-stego .frame,
+.shan-app .fan-image .panel-ig .frame {
+  outline: 1px dashed color-mix(in srgb, var(--teal) 35%, transparent);
+  outline-offset: -1px;
+}
+
+.shan-app .fan-image .panel {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 8px);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.shan-app .fan-image .panel figcaption {
+  padding: 0.45rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.shan-app .fan-image .frame {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: color-mix(in srgb, var(--bg) 60%, var(--surface));
+}
+
+.shan-app .fan-image .preview {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.shan-app .fan-image .preview.noise {
+  image-rendering: pixelated;
+}
+
+.shan-app .fan-image .envelope {
+  margin-top: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 8px);
+  padding: 0.5rem 0.75rem;
+  background: var(--surface);
+}
+
+.shan-app .fan-image .envelope-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.shan-app .fan-image .sealed-text {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  word-break: break-all;
+  max-height: 8rem;
+  overflow: auto;
+  background: color-mix(in srgb, var(--bg) 50%, transparent);
+  border-radius: 4px;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .shan-app .fan-image .controls {
+    grid-template-columns: 1fr;
+  }
+}

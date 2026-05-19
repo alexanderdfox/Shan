@@ -1,0 +1,67 @@
+.fan-form fieldset {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  margin: 0;
+}
+
+.fan-form legend {
+  padding: 0 0.5rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.fan-form label {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.fan-form label.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.fan-form input[type="text"],
+.fan-form input[type="number"],
+.fan-form select {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.fan-form input:focus,
+.fan-form select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.fan-form button {
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fan-form button:hover {
+  filter: brightness(1.08);
+}
